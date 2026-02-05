@@ -6,18 +6,21 @@
   <title>Register</title>
 </head>
 <body>
+  @auth
+    <p>Congrats, you are logged in.</p>
+  @else
+    <div style="border: 3px solid black">
+    <h2>Register</h2>
+    <form action="/register" method="POST">
+      @csrf
 
-<h2>Register</h2>
+      <input type="text" name="name" placeholder="name">
+      <input type="text" name="email" placeholder="email">
+      <input type="password" name="password" placeholder="password">
 
-<form action="/register" method="POST">
-  @csrf
-
-  <input type="text" name="name" placeholder="name">
-  <input type="text" name="email" placeholder="email">
-  <input type="password" name="password" placeholder="password">
-
-  <button type="submit">Register</button>
-</form>
-
+      <button type="submit">Register</button>
+    </form>
+  </div> 
+  @endauth
 </body>
 </html>
