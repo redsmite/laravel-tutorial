@@ -6,15 +6,24 @@
   <title>Document</title>
 </head>
 <body>
-  <div style="border: 3px solid black">
-    <h2>Register</h2>
-    <form action="/register" method="POST">
-        @csrf
-        <input type="text" name="name" placeholder="Name">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <button>Register</button>
+
+  @auth
+    <p>Congrats! You are logged in.</p>
+    <form action="/logout" method="POST">
+      @csrf
+      <button>Log Out</button>
     </form>
-  </div>
+  @else
+    <div style="border: 3px solid black">
+      <h2>Register</h2>
+      <form action="/register" method="POST">
+          @csrf
+          <input type="text" name="name" placeholder="Name">
+          <input type="email" name="email" placeholder="Email">
+          <input type="password" name="password" placeholder="Password">
+          <button>Register</button>
+      </form>
+    </div>
+  @endauth
 </body>
 </html>
